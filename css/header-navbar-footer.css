@@ -331,8 +331,8 @@
 
 /*----logo----*/
     .logo {
-        width: 200px; /* Define a largura da imagem */
-        height: 200px; /* Define a altura da imagem */
+        width: 12vw; /* Define a largura da imagem */
+        height: 12vw; /* Define a altura da imagem */
         background-image: url('../img/logo.png'); /* Substitua pelo caminho da sua imagem */
         background-size: cover;
         animation: spin 30s linear infinite;
@@ -375,7 +375,7 @@ footer{
 	display: flex;
 	justify-content: space-between;
 	width: 99vw;
-	height: 45vh;
+	min-height: 45vh;
 	opacity: 90%;
 	z-index: 0;
 	justify-content: space-around;
@@ -390,8 +390,8 @@ footer{
 			margin: 15px auto 15px 30px;
 		}
 	.logo-footer{
-		width: 200px;
-		height: 200px;
+		width: 12vw;
+		height: 12vw;
 		margin: auto;
 	}
 
