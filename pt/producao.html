@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<link rel="shortcut icon" href="img/EArteALyC.ico">
+	<head>
+		<title>EArte ALyC</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../css/header-navbar-footer.css">
+		<link rel="stylesheet" type="text/css" href="../css/style-geral.css">
+		<link rel="stylesheet" type="text/css" href="../css/producao.css">
+		<script type="text/javascript" src="../buscador.js"></script>
+		<script type="text/javascript" src="../producao.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous">
+	</head>
+	<body>
+		<header id="header">
+<!-- idioma -->
+		    <div id="idioma">
+		    	<div id="idioma-icone"><img src="../img/traducao.png" class="img-idioma"></div>
+		    	<div id="idioma-opcao">
+		    		<a href="../es/producao.html" class="idioma-a">Español</a>
+			        <a href="../pt/producao.html" class="idioma-a">Português</a>
+			        <a href="../en/producao.html" class="idioma-a">English</a></div>
+				</div>
+<!-- cabeçalho -->
+			<div id="navbar" style="position: absolute;">
+				<a href="inicio-pt.html" class="navbar-txt navbar-txt-acervo">Página inicial</a>
+				<span href="sobre.html" class="navbar-txt-acervo" id="nav-sobre-span">
+					<a class="navbar-txt">Sobre o projeto ▾</a>
+					<span class="sobre-span" >
+						<a class="acesso-content-nav" href="sobre.html">Quem somos?</a>
+						<a class="acesso-content-nav" href="sobre.html#nossa-historia">Nossa história</a>
+						<a class="acesso-content-nav" href="sobre.html#equipe">Equipe</a>
+						<a class="acesso-content-nav" href="criterios.html#">O que fazemos?</a>
+						<a class="acesso-content-nav" href="criterios.html#selecao">Critérios de seleção</a>
+						<a class="acesso-content-nav" href="criterios.html#desc">Descritores</a>
+					</span>
+				</span>
+
+				<a href="producao.html" class="navbar-txt navbar-txt-acervo color1">Produção intelectual</a>		
+				<a href="biblioteca.html" class="navbar-txt navbar-txt-acervo">Biblioteca</a>
+				<span class="navbar-txt-acervo" id="nav-banco-span">
+					<a class="navbar-txt">Banco EArte ALyC ▾</a>
+					<span class="banco-span" >
+						<a class="acesso-content-nav" href="#quem-somos">Argentina</a>
+						<a class="acesso-content-nav" href="">Brasil</a>
+						<a class="acesso-content-nav" href="">Colombia</a>
+						<a class="acesso-content-nav" href="">Cuba</a>
+						<a class="acesso-content-nav" href="">Chile</a>
+						<a class="acesso-content-nav" href="">México</a>
+					</span>
+				</span>								
+				<a href="#footer" class="navbar-txt navbar-txt-acervo">Contato</a>
+			</div>
+		</header>
+<!-- seta -->
+			<a class="seta" href="#top"><i class="fas fa-arrow-up"></i></a>
+<!-- cabeçalho fim -->
+<!-- corpo -->
+		<div class="pre-content" id="top"></div>
+
+
+
+
+
+<!--acervo-->
+		<div class="acervo">
+			<p class="titulo-2-2 filtro-titulo">Selecionar filtro</p>
+			<label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao1" value="td" name="filtrar"> Teses e dissertações</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao2" value="livro" name="filtrar"> Livros e capítulos de lívros</label>
+			<label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao3" value="artigo" name="filtrar"> Artigos em periódicos</label>
+			<label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao4" value="evento" name="filtrar"> Artigos em Anais</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao5" value="relatorio" name="filtrar"> Relatórios e projetos</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao6" value="ar" name="filtrar"> Argentina</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao7" value="br" name="filtrar"> Brasil</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao8" value="ch"name="filtrar"> Chile</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao9" value="co" name="filtrar"> Colombia</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao10" value="cu" name="filtrar"> Cuba</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtroOpcao11" value="me" name="filtrar"> México</label>
+		    <label class="label-filtro"><input class="input-filtro" type="checkbox" id="filtrarOpcao0" value="tudo" name="filtrartudo"> Mostar tudo</label>
+		   
+		    <div class="localizar">
+		    	<button class="but-filtro" onclick="filtrarLista()">BUSCAR</button>
+				<button class="clean-but" onclick="clean()">↻</button>
+				<div id="contador" class="txt-2"></div>
+		    </div>
+		</div>
+
+		<p class="apresentacao"><br>Acesse o nosso banco de dados que reúne trabalhos acadêmicos produzidos pelo Coletivo de Pesquisadores em Educação Ambiental Superior da América Latina e Caribe. Esses trabalhos são resultado do nosso esforço em refletir sobre a produção científica, com foco na Educação Ambiental. Oferecemos a possibilidade de filtrar os trabalhos pelo tipo de produção e por país.<br></br></p>
+		 
+		<ul id="listaItens"><!-- Os itens da lista serão adicionados aqui --></ul>
+
+
+
+
+		<div class="espaco"></div>
+
+<!-- rodapé -->
+
+	</body>
+</html>
