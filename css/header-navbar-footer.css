@@ -1,7 +1,7 @@
 
 @media (orientation: portrait){
 	body{		
-		display: flex;
+		display: none;
 		flex-wrap: wrap;
 		width: 99vw;
 		overflow-x: hidden;
@@ -401,15 +401,16 @@ footer{
         margin: auto;
         overflow: hidden;
         margin: auto;
+        margin-right: ;
 		border-radius: 20px;
-		width: 700px;
-		height: 240px;
+		width: 43vw;
+		height: 35vh;
 		background-color: blue;
     }
 
     .imagem-slideshow {
-    	width: 700px;
-		height: 240px;
+    	width: 43vw;
+		height: 35vh;
         opacity: 0;
         transition: opacity 1s ease-in-out;
         position: absolute;

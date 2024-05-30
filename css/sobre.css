@@ -1,0 +1,207 @@
+body{
+	cursor: default;
+}
+	.pre-content{
+		width: 99vw;
+		height: 45vh;
+		margin: 0;
+	}
+		
+		.sobre, .historia, .selecao, .desc{
+			width: 85vw;
+			justify-content: center;
+			align-items: center;
+			align-content: center;
+			margin: auto;
+		}
+
+
+
+		.texto-completo-1, .texto-completo-2{
+			display: none;
+		}
+			.link-ver-mais-1, .link-ver-mais-2{
+				color: blue;
+				cursor: pointer;
+			}
+
+
+
+		.mapa{
+			display: flex;
+			justify-content: space-around;
+			width: 60vw;
+			height: 90vh;
+			margin: auto;
+			background-color: transparent;
+		}
+			.mapa-alyc a{
+				transform: rotate(180deg);
+				 transform-origin: 600px 575px;
+			}
+			.mapa a:hover{
+				fill: gray;
+				cursor: pointer;
+			}
+			.Paraguay, .Bolivia,  .Peru, .Uruguay, .Costa-Rica, .Dominican-Republic, .Ecuador, .Guatemala, .Guyana, .Haiti, .Nicaragua, .Panama, .El-Salvador, .Suriname, .Venezuela, .French-Guiana, .Antigua-and-Barbuda, .Bahamas, .Barbados, .Curaçao, .Dominica, .Falkland-Islands, .Grenada, .Saint-Kitts-and-Nevis, .Saint-Lucia, .Saint-Martin, .Maldives, .Puerto-Rico, .Trinidad-and-Tobago, .Saint-Vincent-and-the-Grenadines, .British-Virgin-Islands, .United-States-Virgin-Islands, .Martinique, .Guadeloupe{
+				fill: #F8F8FF;
+			}
+
+			.local{
+				width: 100%;
+				height: 90vh;
+			}
+			.exibirInformacoes{
+				width: 20vw;
+				height: 20vh;
+				position: absolute;
+				text-align: left;
+				margin-left: 7vw;
+			}
+				.local p{
+					position: absolute;
+				}
+					#local-argentina{
+						transform: translate(10vw, 10vh);
+					}
+					#local-chile{
+						transform: translate(50vw, 10vh);	
+					}
+					#local-brasil{
+						transform: translate(8vw, 37.5vh);
+					}
+					#local-colombia{
+						transform: translate(55vw, 37.5vh);
+					}
+					#local-cuba{
+						transform: translate(15vw, 65vh);
+					}
+					#local-mexico{
+						transform: translate(60vw, 65vh);
+					}
+/*---resumo---*/
+      .resumo{
+      	width: 99vw;
+      	display: flex;
+      	flex-wrap: wrap;
+      	margin:auto;
+      }
+      	.resumo-txt{
+      		width: 80vw;
+      		display: flex;
+      		flex-wrap: wrap;
+      		justify-content: center;
+      		margin: 5vh auto;
+      		background-color: #f0f4f1;
+      		border-radius: 20px;
+      		box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.15);
+      	}
+/*---resumo fim---*/
+
+		.section-equipe{
+			display: flex;
+			flex-wrap: wrap;
+			width: 99vw;
+			justify-content: space-around;
+			background-color: #f8f8ff;
+			margin: 10vh auto;
+		}
+			.grupo{
+				display: flex;
+				flex-wrap: wrap;
+				width: 90vw;
+				justify-content: space-around;
+				margin: 5vh auto;
+			}	
+					.grupo-pais-txt{
+						width: 99vw;
+						text-align: center;
+						font-size: 2em;
+						color: black;
+						margin-bottom: 5vh;
+					}
+					.membro-info{
+						grid-area: "membro-img" "membro-info-content" "membro-nome";
+						justify-content: space-around;
+						text-align: center;
+						width: 10vw;
+						height: 33vh;
+						background-color: #dcdcdc;
+						border-radius: 10px;
+						margin: 3vh 2vw;
+						cursor: default;
+					}
+						.membro-img{
+							width: 10vw;
+							height: 24vh;
+							margin: auto;
+							border-radius: 10px 10px 0 0;
+						}
+						.membro-nome{
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							align-items: center;
+							text-align: center;
+							max-width: 100%;
+							font-size: 0.9rem;
+							margin: auto;
+							height: 9vh;
+							width: 9vw;
+						}
+							.membro-info-content{
+								display: none;
+								width: 100%;
+								height: 100%;
+								margin: auto;
+								justify-content: center;
+							}
+								.membro-info-content-p{
+									display: flex;
+									flex-wrap: wrap;
+									font-size: 0.95em;
+									text-align: center;
+									justify-content: center;
+									margin: auto 7px;
+									align-items: center;
+									align-content: center;
+								}
+								.membro-info:hover .membro-img, .membro-info:hover .membro-nome{
+									display: none;
+								}
+								.membro-info:hover .membro-info-content{
+									display: grid;
+								}
+/*mensagem de link copiado*/
+
+  .mensagem-copiado {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 5px;
+    z-index: 9999;
+  }
+  .btn-copiar {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+  }
+  .btn-copiar:hover {
+    background-color: #0056b3;
+  }
+  .btn-copiar i {
+    margin-right: 5px;
+  }
