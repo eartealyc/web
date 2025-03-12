@@ -34,6 +34,11 @@ function filtrarLista() {
 
 //teses e dissertações
 
+
+//            nome: "Teses e dissertações | Tesis y disertaciones | Theses and dissertations",
+            
+        
+
 //livros e capitulos
 
         {

@@ -5,7 +5,7 @@ window.addEventListener("scroll", function() {
 
   if (window.pageYOffset > 150) {
     header.style.top = "-38vh";
-
+    
     // Adicionar classe para iniciar a animação
     navbar.classList.add("navbar-fixed");
   } else {
@@ -43,7 +43,7 @@ window.addEventListener("scroll", function() {
   var elements = document.querySelectorAll(".exibirInformacoes");
 
   for (var i = 0; i < elements.length; i++) {
-    if (window.pageYOffset > 560) {
+    if (window.pageYOffset > 600) {
       elements[i].style.display = "none";
 
     }
@@ -75,11 +75,6 @@ document.getElementById("local-map").addEventListener("click", limparMap);
     }
 
  
-
-
-
-
-
 
 
  
