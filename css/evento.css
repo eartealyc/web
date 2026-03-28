@@ -1,0 +1,28 @@
+.legenda{
+	width: 90vw;
+	margin: 5vh auto;
+}
+.evento{
+	display: flex;
+	flex-wrap: wrap;
+	width: 90vw;
+	margin: auto;
+	margin-bottom: 10vh;
+	justify-content: center;
+}
+	.evento-card{
+		width: 500px;
+		height: 500px;
+		margin: auto;
+		box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+	}
+		.evento-img{
+			width: 500px;
+			height: 500px;
+			border-radius: 20px;
+			box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+			cursor: pointer;
+		}
+		.evento-img:hover{
+			box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+		}

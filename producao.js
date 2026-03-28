@@ -1,203 +1,243 @@
+/* =========================
+   obs: 
+    tipo1: tese e dissertação
+    tipo2: livro e capitulo de livro
+    tipo3: artigo em revista
+    tipo4: artigo em anais de evento
+    tipo5: Relatório
+
+proximos passos: criar nova planilha oficial e trocr os 2  URLS
+
+
+
+   ========================= */
+let dados = [];
+let dadosFiltrados = [];
+let itensVisiveis = 20;
+
+/*-----------MAPEAMENTOS----------*/
+
+const mapaPaises = {
+  ar: "Argentina",
+  br: "Brasil",
+  ch: "Chile",
+  co: "Colombia",
+  cu: "Cuba",
+  me: "México"
+};
+
+const codigo = ["td", "livro", "artigo", "evento", "relatorio"];
+
+const mapaTipos = {
+  tipo1: "Tesis de doctorado y maestría | Teses de doutorado e mestrado | Doctoral and Master's theses",
+  tipo2: "Libros y capítulos | Livros e capítulos | Book and chapter",  
+  tipo3: "Artículo científico | Artigo científico | Scientific papers",
+  tipo4: "Artículos en eventos | Artigos em eventos | Papers in events",
+  tipo5: "Informes | Relatório | Report"
+};
+
+/*-----------PROCESSAR CSV---------*/
+
+function processarCSV(csv) {
+  const resultado = Papa.parse(csv, {
+    header: true,
+    skipEmptyLines: true
+  });
+
+  return resultado.data.map(linha => ({
+    tipo: linha.tipo?.trim(),
+    codigo: linha.codigo?.split("|").map(o => o.trim()) || [],
+    descricao: linha.descricao?.trim(),
+    autor: linha.autor?.trim(),
+    local: linha.local?.trim(),
+    pais: linha.pais?.trim(),
+    link: linha.link?.trim(),
+    ano: linha.ano?.trim()
+  }));
+}
+
+/*---------RENDERIZAÇÃO---------*/
+
+function renderizar(lista) {
+  const ul = document.getElementById("listaItens");
+  const contador = document.getElementById("contador");
+  const botao = document.getElementById("carregarMais");
+
+  ul.innerHTML = "";
+
+  const listaVisivel = lista.slice(0, itensVisiveis);
+
+  listaVisivel.forEach(item => {
+    const li = document.createElement("li");
+
+    const tipoFormatado = mapaTipos[item.tipo] || item.tipo;
+
+    li.innerHTML = `
+      <span class="item-geral item-nome">${tipoFormatado}</span>
+      </br>
+
+      ${item.descricao ? `
+      <span class="item-geral">
+          <strong>Descripción | Descrição | Description: </strong>
+          <span class="item-descricao">${item.descricao}</span>
+      </span>` : ""}
+
+      </br>
+
+      <span class="item-grupo"> 
+          ${item.autor ? `
+          <span class="item-geral">
+              <strong>Autor | Author: </strong>
+              <span class="item-autor">${item.autor}</span>
+          </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` : ""}
+          
+          ${item.ano ? `
+          <span class="item-geral">
+              <strong>Año | Ano | Year: </strong>
+              <span class="item-ano">${item.ano}</span>
+          </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` : ""}
+
+          ${item.pais ? `
+          <span class="item-geral">
+              <strong>Pais | País| Country: </strong>
+              <span class="item-pais">${item.pais}</span>
+          </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` : ""}
+      </span>
+
+      ${item.local ? `
+      <span class="item-geral">
+          <strong>Local | Place: </strong>
+          <span class="item-local">${item.local}</span>
+      </span>` : ""}
+
+      ${item.link ? `
+      <span class="item-geral item-link">
+          <a class="item-link" href="${item.link}" target="_blank">🔗<strong>Link</strong></a>
+      </span>` : ""}
+    `;
+
+    ul.appendChild(li);
+  });
+
+  contador.textContent = `📂 ${lista.length}`;
+
+  // controle do botão
+  if (botao) {
+    if (itensVisiveis >= lista.length) {
+      botao.style.display = "none";
+    } else {
+      botao.style.display = "block";
+    }
+  }
+}
+
+/*----------------FILTRAR-------------*/
 
 function filtrarLista() {
+  const termoBusca = document.getElementById("busca").value.toLowerCase().trim();
+  const checkboxes = document.querySelectorAll(".input-filtro:checked");
 
-    let contadorItensExibidos = 0;
-    let valorSelecionado = null;
+  const filtrosTipo = new Set();
+  const filtrosPais = new Set();
+  let mostrarTudo = false;
 
-    // Obter os elementos da lista de checkboxes
-    const opcao0 = document.getElementById("filtrarOpcao0").checked;
-    const opcao1 = document.getElementById("filtroOpcao1").checked;
-    const opcao2 = document.getElementById("filtroOpcao2").checked;
-    const opcao3 = document.getElementById("filtroOpcao3").checked;
-    const opcao4 = document.getElementById("filtroOpcao4").checked;
-    const opcao5 = document.getElementById("filtroOpcao5").checked;
-    const opcao6 = document.getElementById("filtroOpcao6").checked;
-    const opcao7 = document.getElementById("filtroOpcao7").checked;
-    const opcao8 = document.getElementById("filtroOpcao8").checked;
-    const opcao9 = document.getElementById("filtroOpcao9").checked;
-    const opcao10 = document.getElementById("filtroOpcao10").checked;
-    const opcao11 = document.getElementById("filtroOpcao11").checked;
+  checkboxes.forEach(cb => {
+    if (cb.value === "tudo") {
+      mostrarTudo = true;
+      return;
+    }
 
-   
-    
-    const listaItens = document.getElementById("listaItens"); // Obter a lista de itens e limpar os itens anteriores
-    listaItens.innerHTML = "";
+    if (codigo.includes(cb.value)) {
+      filtrosTipo.add(cb.value);
+    } else if (mapaPaises[cb.value]) {
+      filtrosPais.add(mapaPaises[cb.value]);
+    }
+  });
 
+  const resultado = dados.filter(item => {
+    if (mostrarTudo) return true;
 
+    const tipoOK =
+      filtrosTipo.size === 0 ||
+      item.codigo.some(op => filtrosTipo.has(op));
 
+    const paisOK =
+      filtrosPais.size === 0 ||
+      filtrosPais.has(item.pais);
 
+    const buscaOK =
+      termoBusca === "" ||
+      [
+        item.tipo,
+        item.descricao,
+        item.autor,
+        item.local,
+        item.ano,
+        item.pais
+      ].some(campo =>
+        campo?.toLowerCase().includes(termoBusca)
+      );
 
+    return tipoOK && paisOK && buscaOK;
+  });
 
+  dadosFiltrados = resultado;
+  itensVisiveis = 20;
 
+  renderizar(dadosFiltrados);
+}
 
-    const Dados = [
+/*----------------CARREGAR MAIS-------------*/
 
-//teses e dissertações
+function carregarMais() {
+  itensVisiveis += 20;
+  renderizar(dadosFiltrados);
+}
 
+/*----------------LIMPAR-------------*/
 
-//            nome: "Teses e dissertações | Tesis y disertaciones | Theses and dissertations",
-            
-        
+function clean() {
+  document.querySelectorAll(".input-filtro")
+    .forEach(cb => (cb.checked = false));
 
-//livros e capitulos
+  document.getElementById("busca").value = "";
 
-        {
-            nome: "Livros e capítulos | Libros y capítulos | Books and chapters",
-            opcoes: ["livro", "ar"],
-            descricao: "III Jornadas Internacionales y V Jornadas Nacionales de Ambiente : libro de resúmenes extendidos",
-            autor: "Silvina Corbetta et. al.",
-            local: "Universidad Nacional de Hurlingham | Universidad Nacional de Moreno",
-            pais: "",
-            link: "https://drive.google.com/file/d/1kB6n5Y0Gu0PYU5bNMxItsUQmwahb_UVp/view",
-        },
-        {
-            nome: "Livros e capítulos | Libros y capítulos | Books and chapters",
-            opcoes: ["livro", "co"],
-            descricao: "La concepción de ambiente en las tesis de maestrías en ciencias sociales. Hacia la comprensión de la complejidad ambiental",
-            autor: "Katherine Higuita Alzate",
-            local: "Institutional Repository of the Pontifical Bolivarian University",
-            pais: "Colombia",
-            link: "https://repository.upb.edu.co/handle/20.500.11912/9777",
-        },
+  dadosFiltrados = dados;
+  itensVisiveis = 20;
 
-//Artigos em periodicos
+  renderizar(dadosFiltrados);
+}
 
-        {
-            nome: "Artigos em periódico | Artículos en revistas | Papers in journals",
-            opcoes: ["artigo", "ar"],
-            descricao: "Itinerarios del “Estado del Arte de la Educación Ambiental Superior en Argentina” (EArte-Ar) Caminos, resultados preliminares y desafíos.",
-            autor: "Sandra A. Alvino | Silvina Corbetta | Candela De la Vega | María L. Foradori | Andrea D. Franco | Raúl E. Ithuralde | José A. Maldonado | Daniel A. Pereyra | Daniela M. Truchet.",
-            local: "Revista Triângulo (2022)",
-            pais: "Argentina",
-            link: "https://seer.uftm.edu.br/revistaeletronica/index.php/revistatriangulo/article/view/6848",
-        },
-        {
-            nome: "Artigos em periódico | Artículos en revistas | Papers in journals",
-            opcoes: ["artigo", "ar", "br", "co"],
-            descricao: "El Colectivo EArte-ALyC y la investigación en Edcucación Ambiental en América Latina (2022)",
-            autor: "Danilo Seithi Kato | María Luisa Eschenhagen Durán | Silvina Corbetta.",
-            local: "Revista Triângulo (2023)",
-            pais: "Argentina | Brasil | Colombia",
-            link: "https://seer.uftm.edu.br/revistaeletronica/index.php/revistatriangulo/article/view/6812",
-        },
-        {
-            nome: "Artigos em periódico | Artículos en revistas | Papers in journals",
-            opcoes: ["artigo", "ar"],
-            descricao: "Educación Ambiental Superior: de cómo nos forman y formamos en nuestras universidades: reflexiones en torno a las producciones académicas de estudiantes y docentes en el marco de un seminario latinoamericano (2023)",
-            autor: "María Luisa Eschenhagen Durán | Silvina Corbetta.",
-            local: "Revista Triângulo (2022)",
-            pais: "Argentina",
-            link: "https://seer.uftm.edu.br/revistaeletronica/index.php/revistatriangulo/article/view/6476/6745",
-        },
-        
+/*----------------INICIALIZAÇÃO-------------*/
 
-//artigos em anais
-
-// Relatorio
-
-        {
-            nome: "Relatórios e projetos | Informes y proyectos | Reports and projects",
-            opcoes: ["relatorio", "ar"],
-            descricao: "Informe final PIUNAHUR 2021",
-            autor: "Silvina Corbetta | Lucía Giménez",
-            local: "Universidad Nacional de Hurlingham (2021)",
-            pais: "Argentina",
-            link: "../arquivos/informe-1.pdf",
-        },
-        {
-            nome: "Relatórios e projetos | Informes y proyectos| Reports and projects",
-            opcoes: ["relatorio", "ar"],
-            descricao: "Convocatoria a proyectos de investigación de La Universidad Nacional de Hurlingham ‘PI UNAHUR 2023’",
-            autor: "Silvina Corbetta",
-            local: "Universidad Nacional de Hurlingham (2023)",
-            pais: "Argentina",
-            link: "../arquivos/informe-2.pdf",
-        },
-//
-
-    ];
-
-
-
-
-
-
-
-
-
-// Filtrar
-    Dados.forEach(item => {
-        if ((opcao0) ||
-            (opcao1 && item.opcoes.includes("td")) ||
-            (opcao2 && item.opcoes.includes("livro")) ||
-            (opcao3 && item.opcoes.includes("artigo")) ||
-            (opcao4 && item.opcoes.includes("evento")) ||
-            (opcao5 && item.opcoes.includes("relatorio")) ||
-            (opcao6 && item.opcoes.includes("ar")) ||
-            (opcao7 && item.opcoes.includes("br")) ||
-            (opcao8 && item.opcoes.includes("ch")) ||
-            (opcao9 && item.opcoes.includes("co")) ||
-            (opcao10 && item.opcoes.includes("cu")) ||
-            (opcao11 && item.opcoes.includes("me"))){
-
-            const li = document.createElement("li");
-            
-            const nomeItem = document.createElement("h3");
-            nomeItem.textContent = item.nome;
-            li.appendChild(nomeItem);
-            
-            const descricaoItem = document.createElement("p");
-            descricaoItem.textContent = item.descricao;
-            li.appendChild(descricaoItem);
-
-            const autorItem = document.createElement("p");
-            autorItem.textContent = item.autor;
-            li.appendChild(autorItem);
-
-            const localItem = document.createElement("p");
-            localItem.textContent = item.local;
-            li.appendChild(localItem);
-
-            const paisItem = document.createElement("p");
-            paisItem.textContent = item.pais;
-            li.appendChild(paisItem);
-            
-            const linkItem = document.createElement("a");
-            linkItem.href = item.link;
-            linkItem.textContent = "Acesso";
-            linkItem.target = "_blank";
-            li.appendChild(linkItem);
-
-            listaItens.appendChild(li);
-
-            contadorItensExibidos++; 
-        }
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vQN3tihC9fA9hwIDLwI9stuL1-UQOZVubJ6G0_bOMDej3TUySXK-yO9unf3sbW40ph9HEv6-1DH2XN-/pub?gid=199551209&single=true&output=csv")
+    .then(res => res.text())
+    .then(csv => {
+      dados = processarCSV(csv);
+      dadosFiltrados = dados;
+      renderizar(dadosFiltrados);
     });
 
+  document.getElementById("busca")
+    .addEventListener("input", filtrarLista);
+});
 
-//exibe o valor do contador
-    const contadorElement = document.getElementById("contador");
-    contadorElement.textContent = `📁 ${contadorItensExibidos}`;
+/*----------------UI-------------*/
 
-//exibe caixa de busca    
-    const buscador = document.getElementById("buscador");
-
-        if (buscador.style.display === 'none') {
-            buscador.style.display = 'flex';
-        }  
+function ocultarfiltro() {
+  const filtro = document.getElementById('filtro');
+  filtro.style.display = filtro.style.display === 'none' ? 'flex' : 'none';
 }
 
-//limapa os dados da busca e zera o contador
-function clean() {
+window.addEventListener("scroll", function() {
+  const elements = document.querySelectorAll(".ocultarbusca");
 
-    let contadorItensExibidos = 0;    
-    const listaItens = document.getElementById("listaItens");
-    const contadorElement = document.getElementById("contador");
-
-    listaItens.innerHTML = ""; // Limpa todos os itens da lista
-    contadorItensExibidos = 0; // Zera o contador
-    contadorElement.textContent = ``; // Atualiza    
-}
-
-
-
+  elements.forEach(el => {
+    if (window.pageYOffset < 830) {
+      el.classList.remove("oculto");
+    } else {
+      el.classList.add("oculto");
+    }
+  });
+});
