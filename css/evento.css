@@ -1,28 +1,38 @@
 .legenda{
 	width: 90vw;
 	margin: 5vh auto;
+	font-size: 2em;
+	text-align: center;
 }
-.evento{
+.evento-card{
 	display: flex;
 	flex-wrap: wrap;
-	width: 90vw;
+	width: 500px;
 	margin: auto;
 	margin-bottom: 10vh;
 	justify-content: center;
 }
-	.evento-card{
-		width: 500px;
-		height: 500px;
-		margin: auto;
-		box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-	}
-		.evento-img{
+	.evento-img{
 			width: 500px;
 			height: 500px;
 			border-radius: 20px;
 			box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-			cursor: pointer;
+			cursor: default;
+			margin: 30px 500px;
 		}
-		.evento-img:hover{
+	.legenda-but{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 200px;
+		height: 70px;
+		background-color: #f8f8f8;
+		margin: auto;
+		font-size: clamp(1em, 1.5em, 2em);
+		border-radius: 10px;
+		color: black;
+	}
+		.legenda-but:hover{
 			box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+			color: #397D50;
 		}
