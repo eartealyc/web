@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- HOME -->
+  <url><loc>https://eartealyc.net/index.html</loc></url>
+  <url><loc>https://eartealyc.net/pt/inicio-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/inicio-en.html</loc></url>
+
+  <!-- BANCO -->
+  <url><loc>https://eartealyc.net/pt/banco-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/banco-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/banco-es.html</loc></url>
+
+  <!-- CRITERIOS -->
+  <url><loc>https://eartealyc.net/pt/criterios-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/criterios-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/criterios-es.html</loc></url>
+
+  <!-- DESCRITORES -->
+  <url><loc>https://eartealyc.net/pt/descritores-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/descritores-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/descritores-es.html</loc></url>
+
+  <!-- DOCUMENTOS -->
+  <url><loc>https://eartealyc.net/pt/documentos-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/documentos-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/documentos-es.html</loc></url>
+
+  <!-- EQUIPE -->
+  <url><loc>https://eartealyc.net/pt/equipe-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/equipe-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/equipe-es.html</loc></url>
+
+  <!-- EVENTO -->
+  <url><loc>https://eartealyc.net/pt/evento-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/evento-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/evento-es.html</loc></url>
+
+  <!-- HISTORIA -->
+  <url><loc>https://eartealyc.net/pt/historia-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/historia-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/historia-es.html</loc></url>
+
+  <!-- NOTICIAS -->
+  <url><loc>https://eartealyc.net/pt/noticias-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/noticias-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/noticias-es.html</loc></url>
+
+  <!-- PAINEL -->
+  <url><loc>https://eartealyc.net/pt/painel-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/painel-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/painel-es.html</loc></url>
+
+  <!-- PRODUCAO -->
+  <url><loc>https://eartealyc.net/pt/producao-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/producao-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/producao-es.html</loc></url>
+
+  <!-- QUEM SOMOS -->
+  <url><loc>https://eartealyc.net/pt/quemsomos-pt.html</loc></url>
+  <url><loc>https://eartealyc.net/en/quemsomos-en.html</loc></url>
+  <url><loc>https://eartealyc.net/es/quemsomos-es.html</loc></url>
+
+  <!-- REPOSITÓRIOS -->
+  <url><loc>https://eartealyc.net/argentina.html</loc></url>
+  <url><loc>https://eartealyc.net/chile.html</loc></url>
+  <url><loc>https://eartealyc.net/colombia.html</loc></url>
+  <url><loc>https://eartealyc.net/cuba.html</loc></url>
+  <url><loc>https://eartealyc.net/mexico.html</loc></url>
+
+  <!-- OUTRAS PAGINAS -->
+  <url><loc>https://eartealyc.net/fundo.html</loc></url>
+
+</urlset>
