@@ -1,4 +1,11 @@
-//: mostrador do montante painel de dados 
+// Google Analytics tag
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H08XSL935C');
+
+// mostrador do montante painel de dados 
 document.addEventListener('DOMContentLoaded', () => {
 
   fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQN3tihC9fA9hwIDLwI9stuL1-UQOZVubJ6G0_bOMDej3TUySXK-yO9unf3sbW40ph9HEv6-1DH2XN-/pub?gid=1188344285&single=true&output=csv')
