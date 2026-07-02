@@ -22,6 +22,21 @@ body{
 		line-height: 1.5em;
 	}
 
+.iiieartealyc {
+    display: flex;
+    justify-content: center;
+    margin: 5vh auto;
+    width: 80vw;
+}
+
+.iiieartealyc img {
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+    object-fit: contain;
+}
+
+
 /*atalhos*/
 .atalho-sec{
 	display: flex;
