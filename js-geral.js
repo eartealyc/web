@@ -86,6 +86,74 @@ window.addEventListener("load", controlarSeta);
 
 
 
+//slides cabeçalho
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    /* CARROSSEL */
+
+    let slideAtual = 0;
+    let pausado = false;
+
+    const slides = document.querySelectorAll("#img-home .slide");
+    const bolinhas = document.querySelectorAll("#img-home .bolinha");
+
+
+    function mostrarSlide(numero) {
+
+        if (numero >= slides.length) {
+            numero = 0;
+        }
+
+        if (numero < 0) {
+            numero = slides.length - 1;
+        }
+
+        slideAtual = numero;
+
+
+        slides.forEach(function(slide) {
+            slide.classList.remove("ativo");
+        });
+
+
+        bolinhas.forEach(function(bolinha) {
+            bolinha.classList.remove("ativa");
+        });
+
+
+        slides[slideAtual].classList.add("ativo");
+        bolinhas[slideAtual].classList.add("ativa");
+    }
+
+
+    function irParaSlide(numero) {
+
+        mostrarSlide(numero);
+
+        /* Ao clicar na bolinha, pausa o carrossel */
+        pausado = true;
+    }
+
+
+    /* Permite que o onclick das bolinhas encontre a função */
+    window.irParaSlide = irParaSlide;
+
+
+    /* Inicia no primeiro slide */
+    mostrarSlide(0);
+
+
+    /* Troca automática a cada 6 segundos */
+    setInterval(function() {
+
+        if (!pausado) {
+            mostrarSlide(slideAtual + 1);
+        }
+
+    }, 5000);
+
+  });
 
 //alerta para o modo retrato ----desenvolver um processo que seja mais leve
 

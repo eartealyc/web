@@ -12,6 +12,9 @@
 	margin-bottom: 10vh;
 	justify-content: center;
 }
+	.evento-card a{
+		margin-bottom: 50px;
+	}
 	.evento-img{
 			width: 500px;
 			height: 500px;
