@@ -27,7 +27,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 200px;
+		width: 400px;
 		height: 70px;
 		background-color: #f8f8f8;
 		margin: auto;
@@ -39,3 +39,205 @@
 			box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 			color: #397D50;
 		}
+
+
+
+.earte-programa {
+  --earte-green: #397d50;
+  --earte-green-dark: #17452f;
+  --earte-green-pale: #edf4ee;
+  --earte-red: #b72b20;
+  --earte-muted: #5b665e;
+  --earte-line: #d7e0d9;
+  color: #202821;
+  margin: auto;
+  width: 80vw;
+}
+
+.earte-programa .earte-jornada {
+  margin: 0 0 2rem;
+}
+
+.earte-programa .earte-jornada h2 {
+  margin: 0 0 1rem;
+  color: black;
+}
+
+.earte-programa .earte-tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.earte-programa .earte-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.earte-programa .earte-col-horario {
+  width: 165px;
+}
+
+.earte-programa .earte-col-actividad {
+  width: 245px;
+}
+
+.earte-programa .earte-tabla th {
+  padding: 11px 14px;
+  color: #fff;
+  background: var(--earte-green);
+  text-align: left;
+  font-size: 1.3rem;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.earte-programa .earte-tabla td {
+  padding: 14px;
+  vertical-align: top;
+  border-top: 1px solid var(--earte-line);
+  overflow-wrap: anywhere;
+}
+
+.earte-programa .earte-tabla tbody tr:first-child td {
+  border-top: 0;
+}
+
+.earte-programa .earte-horario {
+  color: black;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.earte-programa .earte-actividad {
+  font-weight: 700;
+}
+
+.earte-programa .earte-etiqueta {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 2px 7px;
+  color: black;
+  background: var(--earte-green-pale);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.earte-programa .earte-detalles p {
+  margin: 0 0 8px;
+}
+
+.earte-programa .earte-detalles p:last-child {
+  margin-bottom: 0;
+}
+
+.earte-programa .earte-detalles ul,
+.earte-programa .earte-detalles ol {
+  margin: 7px 0 0;
+  padding-left: 1.35rem;
+}
+
+.earte-programa .earte-detalles li {
+  margin: 0 0 9px;
+  padding-left: 2px;
+}
+
+.earte-programa .earte-detalles li:last-child {
+  margin-bottom: 0;
+}
+
+.earte-programa .earte-titulo-mesa {
+  display: block;
+  margin-bottom: 7px;
+  color: black;
+  font-size: 1.1rem;
+}
+
+.earte-programa .earte-mesa-separada {
+  margin-top: 22px !important;
+}
+
+.earte-programa .earte-cierre {
+  padding-left: 12px;
+  border-left: 4px solid var(--earte-red);
+}
+
+/* Em telas estreitas, cada linha vira um bloco legível. */
+@media (max-width: 760px) {
+  .earte-programa .earte-tabla-contenedor {
+    overflow-x: visible;
+  }
+
+  .earte-programa .earte-tabla,
+  .earte-programa .earte-tabla tbody,
+  .earte-programa .earte-tabla tr,
+  .earte-programa .earte-tabla td {
+    display: block;
+    width: 100%;
+  }
+
+  .earte-programa .earte-tabla {
+    table-layout: auto;
+  }
+
+  .earte-programa .earte-col-horario,
+  .earte-programa .earte-col-actividad {
+    width: auto;
+  }
+
+  .earte-programa .earte-tabla thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .earte-programa .earte-tabla tbody tr {
+    margin-bottom: 14px;
+    border: 1px solid var(--earte-line);
+  }
+
+  .earte-programa .earte-tabla td {
+    padding: 8px 13px;
+    border-top: 0;
+  }
+
+  .earte-programa .earte-tabla td.earte-horario {
+    padding-top: 13px;
+    padding-bottom: 3px;
+  }
+
+  .earte-programa .earte-tabla td.earte-actividad {
+    padding-top: 2px;
+    padding-bottom: 8px;
+    color: var(--earte-green-dark);
+  }
+
+  .earte-programa .earte-tabla td.earte-detalles {
+    padding-top: 9px;
+    padding-bottom: 14px;
+    border-top: 1px solid var(--earte-line);
+  }
+}
+
+@media print {
+  .earte-programa .earte-tabla {
+    table-layout: auto;
+  }
+
+  .earte-programa .earte-tabla tr,
+  .earte-programa .earte-tabla li {
+    break-inside: avoid;
+  }
+
+  .earte-programa .earte-tabla td,
+  .earte-programa .earte-tabla th {
+    padding: 8px;
+  }
+}
